@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="stylesheet.css" />
+    <!-- この辺は「!」⇨tabキーで自動入力される -->
+  </head>
+  <body>
+    <div class="buttonbox1">
+      <div id="display1">こんにちは</div>
+      <button id="button1">クリック！</button>
+    </div>
+
+    <div class="buttonbox2">
+      <div id="display2">おしてないよ</div>
+      <button id="button2">
+        おしてね
+      </button>
+    </div>
+  </body>
+
+  <script>
+    const display1 = document.getElementById("display1")
+    const button1 = document.getElementById("button1")
+    //   bodyと場所が違うためconstしておく必要がある
+    button1.onclick = function() {
+      display1.textContent = "クリックされたよ！"
+    }
+
+    const display2 = document.getElementById("display2")
+    const button2 = document.getElementById("button2")
+    button2.onclick = function() {
+      display2.textContent = "おしたね！"
+    }
+  </script>
+</html>
