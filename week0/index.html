@@ -20,6 +20,10 @@
         おしてね
       </button>
     </div>
+    <div class="buttoncount">
+      <div id="display">かぞえるよ</div>
+      <button id="button">クリック！</button>
+    </div>
   </body>
 
   <script>
@@ -34,6 +38,16 @@
     const button2 = document.getElementById("button2")
     button2.onclick = function() {
       display2.textContent = "おしたね！"
+    }
+
+    const display = document.getElementById("display")
+    const button = document.getElementById("button")
+    let count = 0
+    // letで指定したものは値を変化させることができる
+    //constは値が変わらない
+    button.onclick = function() {
+      count += 1
+      display.textContent = count
     }
   </script>
 </html>
