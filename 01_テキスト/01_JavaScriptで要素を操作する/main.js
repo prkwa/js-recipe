@@ -41,3 +41,8 @@ elementPrepend.prepend(div2)
 // 要素を削除する - remove
 const elementRemove = document.getElementById("element-remove")
 elementRemove.remove()
+
+const alartMessage = function() {
+  alert("クリックしたね")
+}
+alertMessage()
