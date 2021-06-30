@@ -23,6 +23,32 @@
         height: 100px;
         background-color: black;
         transition: all 1s;
+        /* 変化する全てのプロパティを１秒かけて変化させる */
+      }
+      .hatten1 {
+        width: 100px;
+        height: 100px;
+        background-color: purple;
+        transition: all 0.5s;
+        /* 変化する全てのプロパティを１秒かけて変化させる */
+      }
+
+      .changesquare {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        transition: all 0.5s;
+      }
+      .circle {
+        border-radius: 50px;
+      }
+      .triangle {
+        background-color: white;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 50px 100px 50px;
+        border-color: transparent transparent #007bff transparent;
       }
     </style>
   </head>
@@ -32,6 +58,11 @@
     <button id="square-button">尖るのです</button>
 
     <div id="figure2" class="squarenobutton"></div>
+
+    <p>発展１</p>
+    <div id="figure3" class="hatten1"></div>
+    <p>発展２</p>
+    <div id="figure4" class="changesquare"></div>
 
     <script src="./main.js"></script>
   </body>
