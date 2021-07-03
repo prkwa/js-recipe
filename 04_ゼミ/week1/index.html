@@ -5,31 +5,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>クイズアプリ</title>
+    <link href="stylesheet.css" rel="stylesheet" type="text/css" media="all" />
   </head>
   <body>
-    <div id="quiz">
-      <h2>クイズです！</h2>
+    <div id="quiz" class="quiz">
+      <h2 class="titlequiz">クイズです！</h2>
       <h3>今、何周目？</h3>
       <button id="week1">week1</button>
       <button id="week2">week2</button>
     </div>
-    <!-- <div id="ifyouclear">
+    <div class="ifyouclear" id="ifyouclear">
       <img src="omedetou.jpeg" height="300" width="400" alt="おめでとう" />
     </div>
-    <div id="ifyoumiss">
-        <img src="zannen.png" height="300" width="400" alt="残念" />
-    </div> -->
+    <div class="ifyoumiss" id="ifyoumiss">
+      <img src="zannen.png" height="300" width="400" alt="残念" />
+    </div>
+    <div id="introduce" class="introduce">
+      <h2 class="introduce">自己紹介</h2>
+    </div>
 
     <script>
       const week1 = document.getElementById("week1")
       const week2 = document.getElementById("week2")
-      //   const omedetou = document.getElementById("ifyouclear")
+      const omedetou = document.getElementById("ifyouclear")
+      const zannen = document.getElementById("ifyoumiss")
       week1.onclick = function() {
         console.log("正解です！")
+        omedetou.style.display = "block"
+        zannen.style.display = "none"
       }
       week2.onclick = function() {
         console.log("不正解です！")
+        zannen.style.display = "block"
+        omedetou.style.display = "none"
       }
+
+      const Name = {
+        name: "あおい",
+        university: "九州大学",
+        age: 20,
+        hobby: ["絵を描く", "料理"],
+        dinner: "角煮",
+        familly: {
+          papa: "父",
+          mama: "母",
+          sister: "妹",
+        },
+        isMentor: false,
+        sayHello: function() {
+          alert(`こんにちは${this.name}です!!`)
+        },
+        todaydinner: function() {
+          alert(`今日の夜ご飯は${this.dinner}です！`)
+        },
+      }
+      console.log(Name.name)
+      Name.sayHello()
+      Name.todaydinner()
+
+      const FizBuzz = function(number) {
+        for (let n = 1; n <= number; n++) {
+          if (n % 15 === 0) {
+            console.log("FizzBuzz")
+          } else if (n % 5 === 0) {
+            console.log("Buzz")
+          } else if (n % 3 === 0) {
+            console.log("Fizz")
+          } else {
+            console.log(n)
+          }
+        }
+      }
+      FizBuzz(100)
     </script>
   </body>
 </html>

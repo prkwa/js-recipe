@@ -1,0 +1,16 @@
+.quiz {
+  text-align: center;
+}
+h2 {
+  background-color: blue;
+  color: white;
+  text-align: center;
+}
+.ifyouclear {
+  display: none;
+  text-align: center;
+}
+.ifyoumiss {
+  display: none;
+  text-align: center;
+}
