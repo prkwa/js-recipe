@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="person"></div>
+    <button id="quit-working-button">退勤</button>
+    <button id="launch-button">打ち上げ</button>
+    <script>
+      const person = document.getElementById("person")
+
+      let isWorking = true // 仕事をしているか
+      let isInSpace = false // 宇宙にいるか
+
+      const draw = function() {
+        if (isWorking) {
+          person.textContent = "🧑‍💻"
+        } else {
+          person.textContent = "😄"
+        }
+
+        if (isInSpace) {
+          person.textContent += "✨🪐✨"
+        } else {
+          person.textContent += "🈁➡️🌏"
+        }
+      }
+
+      draw() // "🧑‍💻🈁➡️🌏"
+      const quitWorkingButton = document.getElementById("quit-working-button")
+      const launchButton = document.getElementById("launch-button")
+
+      // 退勤ボタン
+      quitWorkingButton.onclick = function() {
+        isWorking = false
+        draw() //描画しなおすコマンド
+      }
+
+      // 打ち上げボタン
+      launchButton.onclick = function() {
+        isInSpace = true
+        draw()
+      }
+    </script>
+  </body>
+</html>
