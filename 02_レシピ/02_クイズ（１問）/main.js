@@ -2,6 +2,17 @@ const choice1 = document.getElementById("choice-1")
 const choice2 = document.getElementById("choice-2")
 const choice3 = document.getElementById("choice-3")
 const choice4 = document.getElementById("choice-4")
+//配列の個数分のボタンを作る、idは上からchoice１など
+// const choicesContainer = document.getElementById("choices-container")
+
+// const makeButton = function(buttonNum) {
+//   for (let i = 0; i < quiz.choices.length; i++) {
+//     var makediv = document.createElement("div")
+//     makediv.id = "choice-" + i
+//     choicesContainer.appendChild(makediv)
+//   }
+// }
+
 const feedback = document.getElementById("feedback")
 const quizText = document.getElementById("quiz-text")
 const quizImage = document.getElementById("quiz-image")
