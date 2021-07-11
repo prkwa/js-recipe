@@ -7,25 +7,68 @@
     <title>WebExpertコーステンプレート</title>
   </head>
   <body>
-    <div id="memo-container"></div>
     <input id="memo-input" />
     <button id="add-button">追加</button>
-
+    <button id="sort-button">並び替え</button>
+    <!-- <button id="delete-button">削除</button> -->
+    <div id="memo-container"></div>
     <script>
       const memoContainer = document.getElementById("memo-container")
       const memoInput = document.getElementById("memo-input")
       const addButton = document.getElementById("add-button")
-
+      const sortButton = document.getElementById("sort-button")
+      const deleteButton = document.getElementById("delete-button")
+      let memos = []
+      // Math.rendom().toString(16); //今動かなくなっちゃってるからちょっと消すね！
       addButton.onclick = function() {
         const text = memoInput.value
-        console.log(text)
+        memos.push(text)
 
-        const addmemoContainer = document.createElement("div")
-        addmemoContainer.textContent = text
-        memoContainer.append(addmemoContainer)
+        console.log(memos)
 
-        // 発展ほ
+        // const addmemoContainer = document.createElement("div");
+        // addmemoContainer.textContent = text;
+        // memoContainer.append(addmemoContainer);
+        // memoContainer.innerHTML = "";
+
+        // for (let i = 0; i < memos.length; i++) {
+        //   const text2 = memos[i];
+        //   const div = document.createElement("div");
+        //   div.textContent = text2;
+        //   memoContainer.append(div);
+        // }
+        makeDiv()
+        // 発展★★★
         memoInput.value = ""
+      }
+      //発展１
+      sortButton.onclick = function() {
+        memos.sort()
+        console.log(memos)
+
+        makeDiv()
+        // memoContainer.innerHTML = "";
+
+        // for (let i = 0; i < memos.length; i++) {
+        //   const text2 = memos[i];
+        //   const div = document.createElement("div");
+        //   div.textContent = text2;
+        //   memoContainer.append(div);
+        // }
+      }
+
+      const makeDiv = function() {
+        memoContainer.innerHTML = ""
+
+        for (let i = 0; i < memos.length; i++) {
+          const text2 = memos[i]
+          const div = document.createElement("div")
+          div.textContent = text2
+          memoContainer.append(div)
+          const createDelete = document.createElement("button")
+          createDelete.textContent = "削除"
+          createDelete.setAttribute("id", "delete-button")
+        }
       }
     </script>
   </body>
