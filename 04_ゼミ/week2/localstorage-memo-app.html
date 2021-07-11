@@ -25,15 +25,16 @@
 
         for (let i = 0; i < memos.length; i++) {
           const div = document.createElement("div")
-          div.textContent = memos[i]
+          div.textContent = memos[i].text //{text: "", id:""}
           memoContainer.append(div)
         }
       }
       //★削除ボタンに関するコード
-      // Math.rendom().toString(16);
+      let id = Math.random().toString(16)
+      console.log(typeof id)
       addButton.onclick = function() {
         const text = memoInput.value
-        memos.push(text)
+        memos.push({ text: text, id: id })
         localStorage.memos = JSON.stringify(memos)
 
         console.log(memos)
@@ -46,6 +47,7 @@
       sortButton.onclick = function() {
         memos.sort()
         console.log(memos)
+        localStorage.memos = JSON.stringify(memos)
 
         makeDiv()
       }
@@ -54,14 +56,26 @@
         memoContainer.innerHTML = ""
 
         for (let i = 0; i < memos.length; i++) {
-          const text2 = memos[i]
+          const text2 = memos[i].text
           const div = document.createElement("div")
           div.textContent = text2
           memoContainer.append(div)
           //★削除ボタンに関するコード
-          // const createDelete = document.createElement("button");
-          // createDelete.textContent = "削除";
-          // createDelete.setAttribute("id", "delete-button");
+          const createDelete = document.createElement("button")
+          createDelete.textContent = "削除"
+          createDelete.setAttribute("id", id)
+          memoContainer.append(createDelete)
+          createDelete.onclick = function() {
+            for (let i = 0; i < memos.length; i++) {
+              if (memos[i].id === id) {
+                //memos配列の不要な要素を削除
+                memos.splice(i, 1)
+              }
+            }
+            localStorage.memos = JSON.stringify(memos)
+            div.remove()
+            createDelete.remove()
+          }
         }
       }
     </script>
