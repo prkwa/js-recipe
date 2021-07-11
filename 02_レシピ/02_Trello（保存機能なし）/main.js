@@ -67,3 +67,12 @@ function test_ivent(e) {
     inputElement.value = ""
   }
 }
+
+//要素を複製してcontainerを作る
+const newcontainer = document.getElementById("newcontainer")
+const listContainer = document.getElementById("list-container")
+
+newcontainer.onclick = function() {
+  var clone_element = listContainer.cloneNode(true)
+  listContainer.after(clone_element)
+}

@@ -1,12 +1,14 @@
-const imageElement = document.getElementById("dog-image")
+const imageElement = document.getElementById("cat-image")
 
 // 指定したサーバーにデータを取りに行く
-fetch("https://dog.ceo/api/breeds/image/random") //thenを繋げると、「データをとった後にどうする」というコードができる。thenが使えるのは基本fetchの後に限られている
+fetch("https://api.thecatapi.com/v1/images/search") //thenを繋げると、「データをとった後にどうする」というコードができる。thenが使えるのは基本fetchの後に限られている
   .then((res) => {
     return res.json() // 結果を json として読み込んで、次の then に渡す
   })
   .then((data) => {
-    imageElement.src = data.message // 画像を表示する
+    imageElement.src = data[0].url // 画像を表示する
+    imageElement.height = data[0].height
+    imageElement.width = data[0].width
   })
 
 //   fetch("https://dog.ceo/api/breeds/image/random")
