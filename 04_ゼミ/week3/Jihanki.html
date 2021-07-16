@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>自販機</title>
+  </head>
+  <body>
+    <h1>自販機</h1>
+    <section>
+      <h3>自販機にお金を入れる</h3>
+      <button id="add-button-100">
+        100円入れる
+      </button>
+      <h4>↓財布↓</h4>
+      <div id="display-saifu">1000</div>
+      <h4>↓投入金額↓</h4>
+      <div id="display-jihanki-money">0</div>
+    </section>
+    <section>
+      <h3>商品を買う</h3>
+      <!-- 省略 -->
+      <h1>自販機</h1>
+      <section>
+        <h3>商品を買う</h3>
+        <button id="buy-button-tea">お茶(100円)</button>
+        <button id="buy-button-drink">お酒(150円)</button>
+      </section>
+      <section>
+        <h3>買った商品</h3>
+        <div id="display-items"></div>
+      </section>
+    </section>
+    <section>
+      <h3>おつり</h3>
+      <button id="otsuri">おつり</button>
+    </section>
+  </section>
+
+    <script>
+      // HTML要素を取得する
+      const buyButtonTea = document.getElementById("buy-button-tea");
+      const displayItems = document.getElementById("display-items");
+      const buyButtonDrink = document.getElementById("buy-button-drink");
+
+      // buyButtonTea を押した時の処理
+
+      let saifu = 1000;
+      let jihankiMoney = 0;
+      const addButton100 = document.getElementById("add-button-100");
+      const displaySaifu = document.getElementById("display-saifu");
+      const displayJihankiMoney = document.getElementById(
+        "display-jihanki-money"
+      );
+      addButton100.onclick = function () {
+        if (saifu >= 100) {
+          saifu -= 100;
+          jihankiMoney += 100;
+          displaySaifu.textContent = saifu;
+          displayJihankiMoney.textContent = jihankiMoney;
+        }
+          if (jihankiMoney >= 100) {
+            buyButtonTea.disabled = false;
+          }else if(jihankiMoney < 150){
+            buyButtonDrink.disabled = true;
+          }else if(jihankiMoney < 100){
+            buyButtonTea.disabled = true;
+          }else if(jihankiMoney >= 150){
+            buyButtonTea.disabled = false;
+          } //まずい！なんか動かんww 動かせました！すばら！
+        
+      };
+      buyButtonTea.onclick = function () {
+        if (jihankiMoney >= 100) {
+          jihankiMoney -= 100;
+          displayJihankiMoney.textContent = jihankiMoney;
+          displayItems.textContent += "🍵";
+          // buyButtonTea.disabled = false; // ボタンを復活させる
+        }
+      };
+//発展2
+      buyButtonDrink.onclick = function () {
+        if (jihankiMoney >= 150) {
+          jihankiMoney -= 150;
+          displayJihankiMoney.textContent = jihankiMoney;
+          displayItems.textContent += "🍺";
+          // buyButtonDrink.disabled = false;
+        }else{
+          // buyButtonDrink.disabled = true;
+        }
+      };
+
+      //発展１
+      const otsuri = document.getElementById("otsuri");
+      otsuri.onclick = function(){
+        saifu += jihankiMoney;
+        jihankiMoney = 0
+        displaySaifu.textContent = saifu;
+        displayJihankiMoney.textContent = jihankiMoney;
+      }
+
+      
+    </script>
+  </body>
+</html>

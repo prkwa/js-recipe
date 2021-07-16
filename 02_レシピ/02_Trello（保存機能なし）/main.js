@@ -1,4 +1,7 @@
-// // 追加ボタンを押したら
+
+
+
+ // 追加ボタンを押したら
 // addButton.onclick = function() {
 //   // 入力欄の値（テキスト）をとりだして、 text にいれる
 //   const text = inputElement.value
@@ -43,10 +46,12 @@ addButton.onclick = function() {
 const createCard = function(text) {
   const card = document.createElement("div")
   card.className = "card"
+
   const todo = document.createElement("div")
   todo.className = "todo"
   todo.textContent = text
   card.append(todo)
+  
   const deleteButton = document.createElement("div")
   deleteButton.className = "delete"
   deleteButton.onclick = function() {
@@ -55,6 +60,9 @@ const createCard = function(text) {
   card.append(deleteButton)
   return card //これで完成したものをcardに代入している
 }
+
+
+const 
 
 //発展１
 
