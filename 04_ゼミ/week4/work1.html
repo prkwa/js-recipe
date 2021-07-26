@@ -14,11 +14,8 @@
       <h3>飲み物の名前と値段を表示する</h3>
 
       <div>
-        <div>
-          {{ drinkName }}
-        </div>
-        <buton>{{ drinkPrice }}円</buton>
-        <div>{{kattakazu}}本買いました</div>
+        <div>{{ drinkName }}</div>
+        <button>{{ drinkPrice }}円</button>
       </div>
     </section>
 
@@ -27,24 +24,19 @@
       new Vue({
         el: "#app1",
         data: {
-          drinkName: "お茶",
-          drinkPrice: 120,
-          kattakazu: 0,
-        },
-        methods: {
-          kau: function() {
-            this.kattakazu += 1
-          },
+          drinkName: "お茶", // 名前
+          drinkPrice: 120, // 値段
         },
       })
     </script>
-    <!-- 2. 飲み物を買えるようにする (v-onについて) -->
+
     <section id="app2">
       <h3>飲み物を買えるようにする</h3>
 
       <div>
         <div>{{ drinkName }}</div>
-        <button>{{ drinkPrice }}円</button>
+        <button v-on:click="kau">{{ drinkPrice }}円</button>
+        <div>{{ kattaKazu }}本買いました</div>
       </div>
     </section>
 
@@ -52,8 +44,14 @@
       new Vue({
         el: "#app2",
         data: {
-          drinkName: "お茶", // 名前
-          drinkPrice: 120, // 値段
+          drinkName: "お茶",
+          drinkPrice: 120,
+          kattaKazu: 0,
+        },
+        methods: {
+          kau: function() {
+            this.kattaKazu += 1
+          },
         },
       })
     </script>
