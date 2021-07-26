@@ -34,8 +34,8 @@
       <h3>飲み物を買えるようにする</h3>
 
       <div>
-        <div>{{ drinkName }}</div>
-        <button v-on:click="kau">{{ drinkPrice }}円</button>
+        <div>{{ drink.name }}</div>
+        <button v-on:click="kau">{{ drink.price }}円</button>
         <div>{{ kattaKazu }}本買いました</div>
       </div>
     </section>
@@ -44,13 +44,121 @@
       new Vue({
         el: "#app2",
         data: {
-          drinkName: "お茶",
-          drinkPrice: 120,
+          drink: {
+            name: "お茶",
+            price: 120,
+          },
           kattaKazu: 0,
         },
         methods: {
           kau: function() {
             this.kattaKazu += 1
+          },
+        },
+      })
+    </script>
+    <!-- 3. 売り切れ状態を表示する１ (v-if v-elseについて) -->
+    <section id="app3">
+      <h3>売り切れ状態を表示する１</h3>
+
+      <div>
+        <div>{{ drink.name }}({{ drink.stock }})</div>
+        <button v-on:click="kau">{{ drink.price }}円</button>
+        <div>{{ kattaKazu }}本買いました</div>
+        <div v-if="drink.stock > 0">在庫あり</div>
+        <div v-else>売り切れ</div>
+      </div>
+    </section>
+
+    <script>
+      new Vue({
+        el: "#app3",
+        data: {
+          drink: {
+            name: "お茶", // 名前
+            price: 120, // 値段
+            stock: 3,
+          },
+          kattaKazu: 0,
+        },
+        methods: {
+          kau: function() {
+            if (this.drink.stock > 0) {
+              this.drink.stock -= 1
+              this.kattaKazu += 1
+            }
+          },
+        },
+      })
+    </script>
+    <!-- 4. 売り切れ状態を表示する２ (v-bindについて) -->
+    <section id="app4">
+      <h3>売り切れ状態を表示する２</h3>
+
+      <div>
+        <div>{{ drink.name }}（{{ drink.stock }}）</div>
+        <button v-on:click="kau" v-bind:disabled="drink.stock === 0">
+          {{ drink.price }}円
+        </button>
+        <div>{{ kattaKazu }}本買いました</div>
+      </div>
+    </section>
+
+    <script>
+      new Vue({
+        el: "#app4",
+        data: {
+          drink: {
+            name: "お茶",
+            price: 120,
+            stock: 3,
+          },
+          kattaKazu: 0,
+        },
+        methods: {
+          kau: function() {
+            if (this.drink.stock > 0) {
+              this.drink.stock -= 1
+              this.kattaKazu += 1
+            }
+          },
+        },
+      })
+    </script>
+    <!-- 5. 複数の飲み物を表示する (v-forについて) -->
+    <section id="app5">
+      <h3>複数の飲み物を表示する</h3>
+
+      <div>
+        <div v-for="drink in drinks">
+          <div>{{drink.name}}({{drink.stock}})</div>
+          <button v-on:click="kau(drink)" v-bind:disabled="drink.stock === 0">
+            {{drink.price}}円
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      new Vue({
+        el: "#app5",
+        data: {
+          drinks: [
+            {
+              name: "お茶",
+              price: 120,
+              stock: 3,
+            },
+            {
+              name: "水",
+              price: 200,
+              stock: 3,
+            },
+          ],
+        },
+        methods: {
+          kau: function(drink) {
+            alert(drink.name + "を買いました。")
           },
         },
       })
