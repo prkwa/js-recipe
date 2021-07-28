@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>銀行</title>
+  </head>
+  <body>
+    <!-- 1. 入力 -->
+    <div id="app">
+      <section id="app1">
+        <h3>入力画面</h3>
+
+        <div>
+          <input type="number" v-model="inputValue" />
+          <div>入力額：{{ inputValue }}円</div>
+          <button type="submit" v-on:click="addMoney">
+            入金
+          </button>
+          <button
+            type="submit"
+            v-on:click="minusMoney"
+            v-bind:disabled="balance === 0"
+          >
+            出金
+          </button>
+        </div>
+      </section>
+      <section id="app2">
+        <h3>口座残高</h3>
+        <div>残高{{ balance }}円</div>
+      </section>
+      <section id="app3">
+        <h3>取引記録</h3>
+        <div id="container"></div>
+      </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
