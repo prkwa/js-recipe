@@ -4,11 +4,65 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>銀行</title>
+    <link rel="stylesheet" href="stylesheet.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <title>GEEK銀行</title>
   </head>
   <body>
-    <!-- 1. 入力 -->
+    <div class="header">
+      <div class="header-logo">GEEK銀行</div>
+    </div>
     <div id="app">
+      <div>
+        <div class="app1 col-xs-6">
+          <div class="circle">
+            口座残高<br />
+            {{ balance }}円
+          </div>
+        </div>
+        <div class="app2 col-xs-6">
+          <span
+            id="view_clock"
+            　class="clock"
+            style="text-align: right;"
+          ></span>
+
+          <h3>こんにちは、古川葵さん</h3>
+          <input
+            type="text"
+            v-model="inputValue"
+            placeholder="お取引金額を入力してください"
+            style="width:50%"
+          />
+          <h3 style="text-align: left;">入力金額</h3>
+          <div style="font-size:60px; color:#4957CD;">{{ inputValue }}円</div>
+          <button type="submit" v-on:click="addMoney">
+            入金
+          </button>
+          <button
+            type="submit"
+            v-on:click="minusMoney"
+            v-bind:disabled="balance === 0"
+          >
+            出金
+          </button>
+        </div>
+      </div>
+      <div>
+        <div id="app3">
+          <h3>お取引記録</h3>
+          <div id="container" class="log"></div>
+        </div>
+      </div>
+    </div>
+    <!-- 1. 入力 -->
+    <!-- <div id="app">
       <section id="app1">
         <h3>入力画面</h3>
 
@@ -35,7 +89,7 @@
         <h3>取引記録</h3>
         <div id="container"></div>
       </section>
-    </div>
+    </div> -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <script src="main.js"></script>
   </body>
