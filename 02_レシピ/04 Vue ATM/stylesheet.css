@@ -50,6 +50,12 @@
   font-size: 30px;
   border: none;
 }
+.app2 button:disabled {
+  background-color: #898db1;
+}
+.app2 button:disabled:hover {
+  background-color: #9da0be;
+}
 .app2 button:hover {
   background-color: #8c98ff;
 }
