@@ -62,3 +62,8 @@
 .log {
   background-color: #f1f1ff;
 }
+.signin {
+  float: right;
+  font-size: 10px;
+  padding: 20px 30px;
+}

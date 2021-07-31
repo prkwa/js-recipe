@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="jsAtm">
+      <div id="addMoney">
+        <h3>入力画面</h3>
+        <input type="number" v-model="inputValue" />
+        <div>入力金 :{{ inputValue }} 円</div>
+
+        <button v-on:click="countmoney">入金</button>
+      </div>
+
+      <div id="minusMoney">
+        <h3>口座残高</h3>
+        <div>出金 :{{ zandaka }} 円</div>
+      </div>
+
+      <div id="torihiki">
+        <h3>取引記録</h3>
+        <div>日付 :{{ daytime }}</div>
+        <div>操作 :{{ action }}</div>
+        <div>金額 :{{ money }}</div>
+      </div>
+    </div>
+    <div id="app">
+        <div>
+
+
+            <input
+              type="text"
+              v-model="inputValue"
+              placeholder="お取引金額を入力してください"
+              style="width:50%"
+            />
+            <h3 style="text-align: left;">入力金額</h3>
+            <div style="font-size:60px; color:#4957CD;">{{ inputValue }}円</div>
+
+          
+        </div>
+        <script></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

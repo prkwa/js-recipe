@@ -17,7 +17,24 @@
   <body>
     <div class="header">
       <div class="header-logo">GEEK銀行</div>
+      <section id="v-if-sign-in">
+        <!-- この要素は user が null でないときに表示される -->
+        <div v-if="user !== null" class="signin">
+          <div v-on:click="signOut">サインアウト</div>
+          <div>
+            現在{{ user.name }}としてサインインしています
+          </div>
+        </div>
+        <!-- この要素はそれ以外の場合に表示される -->
+        <div v-else class="signin">
+          <div v-on:click="signIn">サインイン</div>
+          <div>
+            システムの利用にはサインインが必要です
+          </div>
+        </div>
+      </section>
     </div>
+
     <div id="app">
       <div>
         <div class="app1 col-xs-6">
